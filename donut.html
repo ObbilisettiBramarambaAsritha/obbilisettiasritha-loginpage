@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="RGraph.common.core.js"></script>
+<script src="RGraph.common.dynamic.js"></script>
+<script src="RGraph.common.tooltips.js"></script>
+<script src="RGraph.pie.js"></script>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+.navbar {    
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+</style>
+<body>
+
+<div class="navbar"> 
+  <a href="bargraph.html">Bar Graph</a> 
+  <a href="piechart.html"> Pie Chart</a> 
+  <a href="area.html" > Area</a>
+<a href="line.html"> Line</a>
+<a href="donut.html" class="active"> Donut</a>
+<a href="table.html" > Tables</a>
+<a style="float:right" onclick="signup()"> signup</a>
+</div>
+
+</body>
+</html> 
+
+
+</head>
+<body>
+    <canvas id="cvs" width="600" height="350" style="float: left">[No canvas support]</canvas>
+</body>
+<script>
+    labels = ['Mavis','Kevin','Luis','June','Olga','Luis','Pete','Bridget'];
+
+    // Create the Pie chart, set the donut variant and the rest of the
+    // configuration. The variant property is what sets the chart to
+    // be a Donut chart instead of a regular Pie chart.
+    new RGraph.Pie({
+        id: 'cvs',
+        data: [4,8,6,3,5,2,5],
+        options: {
+            shadow: true,
+            shadowOffsetx: 0,
+            shadowOffsety: 5,
+            shadowColor: '#aaa',
+            variant: 'donut3d',
+            labels: labels,
+            labelsSticksLength: 15,
+            labelsSticksLinewidth: 2,
+            colorsStroke: 'transparent',
+            tooltipsCss:{
+                fontSize:'16pt'
+            }
+        }
+    }).draw().responsive([
+        {maxWidth: null,width:600,height:350,options:{radius: 100,labelsList: true, labels:labels,title:'',tooltips:null}},
+        {maxWidth: 900,width:400,height:250,options:{radius: 90,labels: null,title: '(Click for labels)',tooltips:labels}}
+    ]);
+</script>
+<script>
+function  signup(){
+ window.location.href = "index.html";
+}
+</script>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="RGraph.common.core.js"></script>
+<script src="RGraph.common.dynamic.js"></script>
+<script src="RGraph.bar.js"></script>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+</style>
+<body>
+
+<div class="navbar">
+  <a href="bargraph.html" class="active">Bar Graph</a> 
+  <a href="piechart.html"> Pie Chart</a> 
+  <a href="area.html" > Area</a>
+<a href="line.html"> Line</a>
+<a href="donut.html" > Donut</a>
+<a href="table.html" > Tables</a>
+<a style="float:right" onclick="signup()"> signup</a>
+</div>
+
+</body>
+</html> 
+
+
+</head>
+<body>
+    <div style="float: left">
+    <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+</div>
+</body>
+<script>
+    // Quite a basic Bar chart which just has the single 'adjustable'
+    // property being stipulated meaning that you dynamically adjust
+    // the chart
+    new RGraph.Bar({
+        id: 'cvs',
+        data: [8,6,4,8,9,5,3,2,5],
+        options: {
+            title: 'An adjustable Bar chart',
+            titleBold: true,
+            titleSize: 16,
+            adjustable: true,
+            xaxisLabels: ['Alf','Vinny','Moe','Bill','Neil','Olga','Lilly','Paul','John']
+        }
+    }).draw().responsive([
+        {maxWidth: null,width: 600,height: 250,options:{textSize:16},parentCss: {'float':'left'}},
+        {maxWidth: 800,width: 350,height: 200,options:{textSize:10},parentCss: {'float':'none', textAlign: 'center'}}
+    ]);
+</script>
+<script>
+function  signup(){
+ window.location.href = "index.html";
+}
+</script>
+
+</html>

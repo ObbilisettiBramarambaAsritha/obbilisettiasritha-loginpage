@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="RGraph.svg.common.core.js"></script>
+<script src="RGraph.svg.common.key.js"></script>
+<script src="RGraph.svg.line.js"></script>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+.navbar {    
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+</style>
+<body>
+
+<div class="navbar"> 
+  <a href="bargraph.html">Bar Graph</a> 
+  <a href="piechart.html"> Pie Chart</a> 
+  <a href="area.html"  class="active"> Area</a>
+<a href="line.html"> Line</a>
+<a href="donut.html"> Donut</a>
+<a href="table.html" > Tables</a>
+<a style="float:right" onclick="signup()"> signup</a>
+</div>
+
+</body>
+</html> 
+
+
+</head>
+<body>
+    <div style="float: left">
+    <div style="width: 600px; height: 300px" id="cc"></div>
+</div>
+</body>
+<script>
+    // Create the Line chart and give it the three datasets.
+    new RGraph.SVG.Line({
+        id: 'cc',
+        data: [
+            [4,6,12,16,8,4,2,8,18,16,14,16],
+            [2,4,8,4,2,6,6,12,8,10,6,8],
+            [1,3.5,5,3,4,5,6,11,8,9,5,7]
+        ],
+        options: {
+            // Define a key. SVG charts only support a margin based key.
+            // For a graph based key you'll need to use the canvas
+            // libraries.
+            key: ['Robert','Daniel','Janice'],
+            keyColors: ['green','blue','red'],
+
+            xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+            marginTop: 55,
+            marginRight: 15,
+            marginLeft: 50,
+            marginBottom: 50,
+            colors: ['#666', '#666', '#666'],
+            
+            
+            // Stipulate that the chart should be filled and accumulative.
+            // Being accumulative means that the datasets are stacked on
+            // top of each other. This means that the total of the datasets
+            // is clearer compared to when the datasets are non-accumulative
+            // (ie they're just drawn one on top of the other). This may
+            // suit you better if you need to see the combined totals.
+            filled: true,
+            filledAccumulative: true,
+            filledColors: ['Gradient(red:white)', 'Gradient(blue:white)', 'Gradient(green:white)'],
+
+            yaxisScaleUnitsPost: '%',
+            linewidth: 0.001,
+            marginInner: 0,
+            title: 'Robert, Daniel and Janices stats',
+            textColor: '#333',
+            textFont: 'Arial',
+            
+            // Stipulate that the Line is a spline (ie curvy instead of angular)
+            spline: true,
+
+            // Only show the horizontal background grid lines
+            backgroundGridBorder: false,
+            backgroundGridVlines: false,
+
+            // Don't show any axes
+            xaxis: false,
+            yaxis: false
+        }
+    
+    // Use the trace effect to show the chart and add some responsive capability
+    }).trace().responsive([
+        {maxWidth:null,width:600,height:300,options:{textSize: 12},parentCss:{'float':'left',textAlign:'none'}},
+        {maxWidth:900,width:450,height:250,options:{textSize: 10},parentCss:{'float':'none',textAlign:'center'}}
+    ]);
+</script>
+<script>
+function  signup(){
+ window.location.href = "index.html";
+}
+</script>
+</html>
